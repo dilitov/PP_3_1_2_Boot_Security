@@ -53,7 +53,7 @@ public class AdminController {
         model.addAttribute("allRoles", rolesService.getAllRoles());
         return "edit-user";
     }
-    @PostMapping("edit/{id}")
+    @PatchMapping("edit/{id}")
     public String update(@ModelAttribute("user") User user,
                          @RequestParam("roles") String[] roles,
                          @PathVariable("id") int id) {
@@ -61,7 +61,7 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") int id, Model model) {
         userService.deleteUser(id);
         return "redirect:/admin";
